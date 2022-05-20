@@ -3,13 +3,15 @@ version: "3"
 services:
   db:
     platform: linux/x86_64
-    image: mysql:8.0.28
+    image: mysql:8.0
     environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: django-db
+      MYSQL_USER: django
+      MYSQL_PASSWORD: django
       TZ: "Asia/Tokyo"
     volumes:
       - db-store:/var/lib/mysql
-      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
       - ./docker/mysql/initdb.d:/docker-entrypoint-initdb.d
     ports:
       - 3306:3306
