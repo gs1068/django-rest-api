@@ -3,5 +3,10 @@ ENV PYTHONUNBUFFERED 1
 RUN mkdir /src
 WORKDIR /src
 COPY requirements.txt /src/
-RUN pip install --upgrade pip && pip install -r requirements.txt
-COPY . /src/       
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt
+
+RUN pip install djangorestframework && \
+    pip install markdown && \
+    pip install django-filter
+  COPY . /src/       
